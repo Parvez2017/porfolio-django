@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Project Details</h2>
+                <div class="page_link">
+                    <a href="{% url 'index' %}">Home</a>
+                    <a href="{% url 'projects' %}">Projects</a>
+                    <a href="{% url 'project' project.id %}">Project Details</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!--================Portfolio Details Area =================-->
+<section class="portfolio_details_area p_120">
+    <div class="container">
+        <div class="portfolio_details_inner">
+            {% if project %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="left_img">
+                        <img class="img-fluid" src="{{ project.image.url }}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="portfolio_right_text">
+                        <h4>{{ project.title }}</h4>
+                        <p>{{ project.desc }}</p>
+                        <ul class="list">
+                            <li><a href="{{ project.website_link }}"> Go to Website </a></li>
+                            <li><a href="{{ project.git_link }}"> Check Code on Github </a></li>
+                            <li><span>Completed</span>:{{ project.create_time }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>Nothing to show!</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!--================End Portfolio Details Area =================-->
+{% endblock %}

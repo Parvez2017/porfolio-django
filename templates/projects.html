@@ -7,10 +7,10 @@
         <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
         <div class="container">
             <div class="banner_content text-center">
-                <h2>Portfolio</h2>
+                <h2>Projects</h2>
                 <div class="page_link">
-                    <a href="index.html">Home</a>
-                    <a href="portfolio.html">Portfolio</a>
+                    <a href="{% url 'index' %}">Home</a>
+                    <a href="{% url 'projects' %}">Projects</a>
                 </div>
                 
             </div>
@@ -26,62 +26,26 @@
             <h2>Our Recent Completed Projects</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
         </div>
+        {% if projects %}
+        {% for item in projects %}
         <div class="projects_inner row">
             <div class="col-lg-4 col-sm-6 brand web">
                 <div class="projects_item">
-                    <img class="img-fluid" src="img/projects/projects-1.jpg" alt="">
+                    <img class="img-fluid" src="{{ item.image.url }}" alt="">
                     <div class="projects_text">
-                        <a href="portfolio-details.html"><h4>3D Helmet Design</h4></a>
-                        <p>Client Project</p>
+                        <a href="{% url 'project' item.id %}"><h4>{{ item.title }}</h4></a>
+                        <p>{{ item.desc }}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 brand work">
-                <div class="projects_item">
-                    <img class="img-fluid" src="img/projects/projects-2.jpg" alt="">
-                    <div class="projects_text">
-                        <a href="portfolio-details.html"><h4>3D Helmet Design</h4></a>
-                        <p>Client Project</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 work">
-                <div class="projects_item">
-                    <img class="img-fluid" src="img/projects/projects-3.jpg" alt="">
-                    <div class="projects_text">
-                        <a href="portfolio-details.html"><h4>3D Helmet Design</h4></a>
-                        <p>Client Project</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 brand web">
-                <div class="projects_item">
-                    <img class="img-fluid" src="img/projects/projects-4.jpg" alt="">
-                    <div class="projects_text">
-                        <a href="portfolio-details.html"><h4>3D Helmet Design</h4></a>
-                        <p>Client Project</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 brand work">
-                <div class="projects_item">
-                    <img class="img-fluid" src="img/projects/projects-5.jpg" alt="">
-                    <div class="projects_text">
-                        <a href="portfolio-details.html"><h4>3D Helmet Design</h4></a>
-                        <p>Client Project</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 brand work web">
-                <div class="projects_item">
-                    <img class="img-fluid" src="img/projects/projects-6.jpg" alt="">
-                    <div class="projects_text">
-                        <a href="portfolio-details.html"><h4>3D Helmet Design</h4></a>
-                        <p>Client Project</p>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+    <p>Nothing to show</p>
+
+    {% endif %}
     </div>
 </section>
 <!--================End Projects Area =================-->

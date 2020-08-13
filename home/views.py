@@ -1,23 +1,37 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Project, Skill
 
 # Create your views here.
 def index(request):
     projects = Project.objects.all()
+    skills = Skill.objects.all()
 
     context = {
-        'projects': projects
+        'projects': projects,
+        'skills': skills
     }
     return render(request, 'index.html', context)
 
 def about(request):
-    return render(request, 'about.html')
+    skills = Skill.objects.all()
+
+    context = {
+        'skills': skills
+    }
+    return render(request, 'about.html', context)
 
 def projects(request):
-    return render(request, 'projects.html')
+    projects = Project.objects.all()
+
+    context = {
+        'projects': projects
+    }
+    return render(request, 'projects.html', context)
 
 def project(request, project_id):
-    return render(request, 'project.html')
+    project = get_object_or_404(Project, pk=project_id)
+    context = {
+        'project': project
+    }
 
-def resume(request):
-    return render(request, 'resume.html')
+    return render(request, 'project.html', context)
