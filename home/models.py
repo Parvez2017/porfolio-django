@@ -5,6 +5,7 @@ from datetime import datetime
 class Project(models.Model):
     title = models.CharField(max_length=70)
     desc = models.TextField()
+    long_desc = models.TextField(default='description')
     image = models.ImageField(upload_to='photos/%Y/%m/%d/')
     website_link = models.URLField(max_length=200)
     git_link = models.URLField(max_length=200)

@@ -13,9 +13,9 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="banner_content">
-								<h5>This is me</h5>
-								<h2>Travor James</h2>
-								<p>You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</p>
+								<h5>Hey!</h5>
+								<h2>It's Parvez</h2>
+								<p>A Machine Learning Geek who loves to play around data.</p>
 								<a class="banner_btn" href="{% url 'projects' %}">See My Projects</a>
 							</div>
 						</div>
@@ -32,7 +32,7 @@
             <div class="col-lg-6">
                 <div class="welcome_text">
                     <h4>About Myself</h4>
-                    <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p>
+                    <p>I love to introduce myself as a learner. As Aristotle said "You are what you do repeatedly". Like the saying I always evolve to be the master of things I love doing most.</p>
                 </div>
             </div>
 
@@ -65,8 +65,7 @@
         <section class="projects_area p_120">
         	<div class="container">
         		<div class="main_title">
-					<h2>Our Recent Completed Projects</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+					<h2>MY Recent Completed Projects</h2>
                 </div>
                 {% if projects %}
                 {% for item in projects %}
@@ -75,7 +74,7 @@
 						<div class="projects_item">
 							<img class="img-fluid" src="{{ item.image.url }}" alt="">
 							<div class="projects_text">
-								<a href="portfolio-details.html"><h4>{{ item.title }}</h4></a>
+								<a href="{% url 'project' item.id %}"><h4>{{ item.title }}</h4></a>
 								<p>{{ item.desc }}</p>
 							</div>
 						</div>
